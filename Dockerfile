@@ -4,7 +4,6 @@ RUN apt-get update
 
 # Install Ant
 RUN apt-get --assume-yes install ant
-RUN ant -version
 ENV ANT_OPTS -Xmx2048m -Xms2048m -XX:MaxPermSize=512m
 
 # Install Git
