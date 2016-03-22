@@ -8,6 +8,7 @@ Run poshi tests using docker
 4. `cd` _docker-poshi-runner directory_
 5. `docker build -t test-runner .`
 6. Make a copy of your `test.{username}.properties` named `test.root.properties` in your portal source directory
+	* Make sure this file has the `test.url` property set
 
 ### Run test with script
 
@@ -15,7 +16,7 @@ Run poshi tests using docker
 2. From Terminal: `./run_test.sh {testname} {port)`
 
 ### Run test manually
-1. Set test.root.properties with test url of your portal instance
+1. Edit `test.url` property in `test.root.properties`
     * Get IP of machine that is running the portal
     * Add property value `test.url=http://{IP}:8080`
 2. Run the test 
