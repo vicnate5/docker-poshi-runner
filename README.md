@@ -15,6 +15,8 @@ Run poshi tests using docker
 1. Edit `run_test.sh` and set path for `source_dir`
 2. From Terminal: `./run_test.sh {testname} {port)`
 
+Note for Mac users: the script uses `gsed`
+
 ### Run test manually
 1. Edit `test.url` property in `test.root.properties`
     * Get IP of machine that is running the portal
