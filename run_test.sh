@@ -8,7 +8,7 @@
 ##
 ## Setting the port is optional, defaults to 8080
 
-source_dir="~/Liferay/liferay-portal-master/"
+source_dir="/Users/vicnate5/Liferay/liferay-portal-master/"
 
 OS=$(uname)
 
