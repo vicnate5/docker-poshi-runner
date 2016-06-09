@@ -15,17 +15,17 @@ OS=$(uname)
 if [[ ${OS} == *Darwin* ]]
 then
 	open=open
-	sed=gsed
-	url="$(ifconfig en0 | grep 'inet 172' | cut -d: -f2 | awk '{ print $2}')"
+	sed="sed -i '' -e"
+	url="$(ifconfig en4 | grep 'inet 192' | cut -d: -f2 | awk '{ print $2}')"
 elif [[ ${OS} == *Linux* ]]
 then
 	open=xdg-open
-	sed=sed
-	url="$(ifconfig en0 | grep 'inet 172' | cut -d: -f2 | awk '{ print $2}')"
+	sed="sed -i -e"
+	url="$(ifconfig en4 | grep 'inet 192' | cut -d: -f2 | awk '{ print $2}')"
 elif [[ ${OS} == *NT* ]]
 then
 	open=start
-	sed=sed
+	sed="sed -i -e"
 	url="$(ipconfig | grep IPv4 | cut -d: -f2 | awk '{ print $1}')"
 else
 	echo "Could not detect OS"
@@ -46,13 +46,13 @@ echo "${testname}"
 echo "Portal url: ${url}:${port}"
 echo
 
-${sed} -i "s~test.url=.*~test.url=http://${url}:${port}~" ${source_dir}/test.root.properties
+${sed} "s~test.url=.*~test.url=http://${url}:${port}~" ${source_dir}/test.root.properties
 
 docker run -t --rm -v ${source_dir}:/source test-runner /bin/bash -c \
 "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.class=${testname}"
 
 echo
 echo "Finished ${testname}"
-prTestName=$(echo ${testname} | ${sed} 's/#/_/')
+prTestName=$(echo ${testname} | sed 's/#/_/')
 ${open} ${source_dir}/portal-web/test-results/${prTestName}/index.html
 echo "done"
