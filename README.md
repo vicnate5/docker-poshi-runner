@@ -3,14 +3,15 @@ Run poshi tests using docker
 
 ### Setup
 1. Install Docker [Windows](https://docs.docker.com/windows)/[Mac](https://docs.docker.com/mac)/[Linux](https://docs.docker.com/linux)
-2. Clone this repo
-3. Open Terminal (or Docker Quickstart Terminal if you are on Windows)
-4. `cd` _docker-poshi-runner directory_
-5. Build image
+2. Set docker virtual machine memory to at least 2gb (4gb recommended)
+3. Clone this repo
+4. Open Terminal (or Docker Quickstart Terminal if you are on Windows)
+5. `cd` _docker-poshi-runner directory_
+6. Build image
 ```
 docker build -t test-runner .
 ```
-6. Make a copy of your `test.{username}.properties` named `test.root.properties` in your portal source directory
+7. Make a copy of your `test.{username}.properties` named `test.root.properties` in your portal source directory
 	* Make sure this file has the `test.url` property set
 
 ### Run test with script
