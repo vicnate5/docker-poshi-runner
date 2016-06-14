@@ -16,12 +16,12 @@ if [[ ${OS} == *Darwin* ]]
 then
 	open=open
 	sed="sed -i '' -e"
-	url="$(ifconfig en4 | grep 'inet 192' | cut -d: -f2 | awk '{ print $2}')"
+	url="$(ifconfig en0 | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')"
 elif [[ ${OS} == *Linux* ]]
 then
 	open=xdg-open
 	sed="sed -i -e"
-	url="$(ifconfig en4 | grep 'inet 192' | cut -d: -f2 | awk '{ print $2}')"
+	url="$(ifconfig en0 | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')"
 elif [[ ${OS} == *NT* ]]
 then
 	open=start
