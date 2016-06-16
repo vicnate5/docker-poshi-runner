@@ -32,6 +32,12 @@ else
 	exit
 fi
 
+if [[ -z "${url}" ]]
+then
+	echo "Unable to get local IP"
+	echo "Please check url statement for your OS in this script"
+	exit
+fi
 
 if [[ -z "${2}" ]]
 then
@@ -46,7 +52,14 @@ echo "${testname}"
 echo "Portal url: ${url}:${port}"
 echo
 
-${sed} "s~test.url=.*~test.url=http://${url}:${port}~" ${source_dir}/test.root.properties
+if [[ -e ${source_dir}/test.root.properties ]]
+then
+	${sed} "s~test.url=.*~test.url=http://${url}:${port}~" ${source_dir}/test.root.properties
+else
+	echo "Unable to find test.root.properties file"
+	echo 'Please create this file with property "test.url=" defined'
+	exit
+fi
 
 docker run -t --rm -v ${source_dir}:/source test-runner /bin/bash -c \
 "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.class=${testname}"
