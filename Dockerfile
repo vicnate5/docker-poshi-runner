@@ -10,10 +10,14 @@ ENV ANT_OPTS -Xmx2048m -Xms2048m -XX:MaxPermSize=512m
 RUN apt-get --assume-yes install git
 
 # Install Firefox
-RUN wget https://ftp.mozilla.org/pub/firefox/releases/38.6.1esr/linux-x86_64/en-US/firefox-38.6.1esr.tar.bz2
-RUN tar -xjvf firefox-38.6.1esr.tar.bz2
+RUN apt-get --assume-yes install firefox
+RUN wget https://ftp.mozilla.org/pub/firefox/releases/45.0.1esr/linux-x86_64/en-US/firefox-45.0.1esr.tar.bz2
+RUN tar -xjvf firefox-45.0.1esr.tar.bz2
+RUN rm -rf /usr/lib/firefox*
 RUN mv firefox/ /usr/lib/firefox/
+RUN rm /usr/bin/firefox
 RUN ln -s /usr/lib/firefox/firefox /usr/bin/firefox
+RUN firefox -version
 
 # Setting up headless screen
 RUN apt-get --assume-yes install Xvfb
