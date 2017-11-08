@@ -1,7 +1,6 @@
 #!/bin/bash
 
-## This can be configured to run from one source directory at a time
-## set the variable $source_dir to to path of your source files
+## Run poshi headlessly in Docker
 ##
 ## Run this script by using:
 ## ./docker_test.sh TESTNAME PORT
