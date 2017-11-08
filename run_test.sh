@@ -38,6 +38,13 @@ then
 	exit
 fi
 
+if [[ ! -e ${source_dir}/build-test.xml ]]
+then
+	echo "Cannot find build-test.xml"
+	echo "Please run this script from the root of your portal source directory"
+	exit
+fi
+
 if [[ -z "${2}" ]]
 then
 	port="8080"
