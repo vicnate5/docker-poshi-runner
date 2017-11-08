@@ -60,7 +60,7 @@ echo
 
 if [[ -e ${source_dir}/test.root.properties ]]
 then
-	${sed} "s~test.url=.*~test.url=http://${url}:${port}~" ${source_dir}/test.root.properties
+	${sed} "s/test.url=.*/test.url=http:\/\/${url}:${port}/" ${source_dir}/test.root.properties
 else
 	echo "test.root.properties file not found"
 	echo "test.url=http://${url}:${port}" > ${source_dir}/test.root.properties
