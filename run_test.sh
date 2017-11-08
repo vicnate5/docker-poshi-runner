@@ -62,7 +62,7 @@ else
 	exit
 fi
 
-docker run -t --rm -v ${source_dir}:/source test-runner /bin/bash -c \
+docker run -t --rm -v ${source_dir}:/source:cached test-runner /bin/bash -c \
 "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.class=${testname}"
 
 echo
