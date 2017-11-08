@@ -8,7 +8,6 @@
 ## Setting the port is optional, defaults to 8080
 
 source_dir="$(pwd)"
-echo $source_dir
 
 OS=$(uname)
 
