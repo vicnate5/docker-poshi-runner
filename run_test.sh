@@ -56,9 +56,9 @@ if [[ -e ${source_dir}/test.root.properties ]]
 then
 	${sed} "s~test.url=.*~test.url=http://${url}:${port}~" ${source_dir}/test.root.properties
 else
-	echo "Unable to find test.root.properties file"
-	echo 'Please create this file with property "test.url=" defined'
-	exit
+	echo "test.root.properties file not found"
+	echo "test.url=http://${url}:${port}" > ${source_dir}/test.root.properties
+	echo "test.root.properties created"
 fi
 
 docker run -t --rm -v ${source_dir}:/source:cached test-runner /bin/bash -c \
