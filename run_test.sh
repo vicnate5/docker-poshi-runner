@@ -61,7 +61,7 @@ else
 	echo "test.root.properties created"
 fi
 
-docker run -t --rm -v ${source_dir}:/source:cached test-runner /bin/bash -c \
+docker run -t --rm -v ${source_dir}:/source:cached vicnate5/functional-test-runner /bin/bash -c \
 "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.class=${testname}"
 
 echo
