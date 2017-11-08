@@ -6,9 +6,6 @@ RUN apt-get update
 RUN apt-get --assume-yes install ant
 ENV ANT_OPTS -Xmx2048m -Xms2048m -XX:MaxPermSize=512m
 
-# Install Git
-RUN apt-get --assume-yes install git
-
 # Install Firefox
 RUN wget https://ftp.mozilla.org/pub/firefox/releases/45.0.1esr/linux-x86_64/en-US/firefox-45.0.1esr.tar.bz2
 RUN tar -xjvf firefox-45.0.1esr.tar.bz2
