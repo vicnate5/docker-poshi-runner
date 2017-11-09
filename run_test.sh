@@ -54,6 +54,7 @@ fi
 
 testname="${1}"
 
+echo
 echo "${testname}"
 echo "Portal url: ${url}:${port}"
 echo
