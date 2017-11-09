@@ -41,5 +41,5 @@ Note: Results will be stored in the normal location as the docker container simp
 
 * Error message during test execution: `Directory /source/../bundles/logs does not exist.` The test will not be able to see errors in the console.
 * Script does not work on Windows because of limitations in GitBash with mounting folders
-* Script uses expression to get your machine's IP might not work on all network configurations
+* Script uses expression to get your machine's IP. The expression might need to be tweaked to work on your network configuration
 * build-text.xml does a full modules directory search for poshi toggles. This can have a significant impact on performance when starting up poshi-runner.
