@@ -1,5 +1,7 @@
 # docker-poshi-runner
-Run poshi tests using docker
+Run poshi tests headlessly using docker.
+
+A built image is hosted at https://hub.docker.com/r/vicnate5/functional-test-runner/ so you do not need to build the Dockerfile unless you want to make changes to it.
 
 ### Setup
 1. Install Docker [Windows](https://docs.docker.com/windows)/[Mac](https://docs.docker.com/mac)/[Linux](https://docs.docker.com/linux)
