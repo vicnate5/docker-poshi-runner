@@ -43,3 +43,4 @@ Note: Results will be stored in the normal location as the docker container simp
 * Script does not work on Windows because of limitations in GitBash with mounting folders
 * Script uses expression to get your machine's IP. The expression might need to be tweaked to work on your network configuration
 * build-text.xml does a full modules directory search for poshi toggles. This can have a significant impact on performance when starting up poshi-runner.
+* Tests that need to download and then upload a file will not work
