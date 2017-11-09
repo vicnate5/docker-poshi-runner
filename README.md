@@ -1,12 +1,12 @@
 # docker-poshi-runner
 Run poshi tests headlessly using docker.
 
-A built image is hosted at https://hub.docker.com/r/vicnate5/functional-test-runner/ so you do not need to build the Dockerfile unless you want to make changes to it.
-
 ### Setup
 1. Install Docker [Windows](https://docs.docker.com/windows)/[Mac](https://docs.docker.com/mac)/[Linux](https://docs.docker.com/linux)
 2. Set docker virtual machine memory to at least 2gb (4gb recommended)
 3. Clone this repo (or just download the **run_test.sh** file)
+
+A built image is hosted at https://hub.docker.com/r/vicnate5/functional-test-runner/ so you do not need to build the Dockerfile unless you want to make changes to it.
 
 ### Running a test with script (Mac/Linux only)
 
