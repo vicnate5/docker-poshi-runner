@@ -22,7 +22,7 @@ Run poshi tests using docker
     * Add property value `test.url=http://{IP}:8080`
 3. Run the test
 
-Windows
+Windows (use windows command line, will not work in gitbash)
 ```
 docker run -t --rm -v %cd%:/source vicnate5/functional-test-runner /bin/bash -c "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.class={testname}"
 ```
