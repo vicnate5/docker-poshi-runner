@@ -25,7 +25,7 @@ A built image is hosted at https://hub.docker.com/r/vicnate5/functional-test-run
 *Additional Recommended Properties:*<br />
 `test.skip.tear.down=true`<br />
 `test.assert.console.errors=false`
-4. Run the test
+4. From the root directory of your Portal source code, run the following command:
 
 Windows (use windows command line, will not work in gitbash)
 ```
