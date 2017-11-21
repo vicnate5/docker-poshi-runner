@@ -21,8 +21,8 @@ A built image is hosted at https://hub.docker.com/r/vicnate5/functional-test-run
 2. Create a file in your Portal source directory named `test.root.properties`
 3. Add `test.url` property to `test.root.properties`
     * Get IP of machine that is running the portal
-    * Add property value `test.url=http://{IP}:8080`<br />
-*Additional Recommended Properties*<br />
+    * Add property value `test.url=http://{IP}:8080`<br /><br />
+*Additional Recommended Properties:*<br />
 `test.skip.tear.down=true`<br />
 `test.assert.console.errors=false`
 4. Run the test
