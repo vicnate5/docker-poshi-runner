@@ -18,11 +18,14 @@ A built image is hosted at https://hub.docker.com/r/vicnate5/functional-test-run
 
 ### Run test manually
 1. Start a local Portal server
-2. Create a file in your Portal source directory called `test.root.properties`
-2. Add `test.url` property to `test.root.properties`
+2. Create a file in your Portal source directory named `test.root.properties`
+3. Add `test.url` property to `test.root.properties`
     * Get IP of machine that is running the portal
-    * Add property value `test.url=http://{IP}:8080`
-3. Run the test
+    * Add property value `test.url=http://{IP}:8080`<br />
+*Additional Recommended Properties*<br />
+`test.skip.tear.down=true`<br />
+`test.assert.console.errors=false`
+4. Run the test
 
 Windows (use windows command line, will not work in gitbash)
 ```
