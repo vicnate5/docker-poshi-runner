@@ -4,16 +4,20 @@ Run poshi tests headlessly using docker.
 ### Setup
 1. Install Docker [Windows](https://docs.docker.com/windows)/[Mac](https://docs.docker.com/mac)/[Linux](https://docs.docker.com/linux)
 2. Set docker virtual machine memory to at least 2gb (4gb recommended)
-3. Clone this repo (or just download the **run_test.sh** file)
+3. Clone this repo (or just download the **run_test.sh** script file)
 
 A built image is hosted at https://hub.docker.com/r/vicnate5/functional-test-runner/ so you do not need to build the Dockerfile unless you want to make changes to it.
 
-### Running a test with script (Mac/Linux only)
+### Running a test with the script (Mac/Linux only)
 
 1. Start a local Portal server
-2. From the root directory of your Portal source code, run the script:
+2. From the root directory of your Portal source code, copy over and run the script:
 ```
 ./run_test.sh {testname}
+```
+e.g.
+```
+./run_test.sh PortalSmoke#Smoke
 ```
 
 ### Run test manually
