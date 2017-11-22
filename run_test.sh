@@ -10,6 +10,26 @@
 source_dir="$(pwd)"
 source_dir_mount="-v ${source_dir}:/source"
 
+liferay_home=""
+liferay_home_mount=""
+
+if [ "" == "${USER}" ]; then
+	USER=${USERNAME}
+fi
+
+if [ -f "app.server.${USER}.properties" ]; then
+	if [[ 0 -ne $(egrep -o $'\r\n'\$ "app.server.${USER}.properties" | wc -c ) ]]; then
+		perl -pi -e 's/\r\n|\n|\r/\n/g' "app.server.${USER}.properties"
+	fi
+
+	liferay_home=$(grep -F app.server.parent.dir app.server.${USER}.properties | cut -d'=' -f 2)
+	liferay_home_mount="-v ${liferay_home}:${liferay_home}"
+fi
+
+if [ "" == "${liferay_home}" ]; then
+	liferay_home_mount="-v $(dirname ${source_dir})/bundles:/bundles"
+fi
+
 OS=$(uname)
 
 if [[ ${OS} == *Darwin* ]]
@@ -72,7 +92,7 @@ else
 	echo "test.root.properties created"
 fi
 
-docker run -t --rm ${source_dir_mount} vicnate5/functional-test-runner /bin/bash -c \
+docker run -t --rm ${source_dir_mount} ${liferay_home_mount} vicnate5/functional-test-runner /bin/bash -c \
 "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.class=${testname}"
 
 echo
