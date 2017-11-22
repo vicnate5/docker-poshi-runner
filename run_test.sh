@@ -7,6 +7,8 @@
 ##
 ## Setting the port is optional, defaults to 8080
 
+docker_image="vicnate5/functional-test-runner"
+
 source_dir="$(pwd)"
 source_dir_mount="-v ${source_dir}:/source"
 
@@ -92,7 +94,7 @@ else
 	echo "test.root.properties created"
 fi
 
-docker run -t --rm ${source_dir_mount} ${liferay_home_mount} vicnate5/functional-test-runner /bin/bash -c \
+docker run -t --rm ${source_dir_mount} ${liferay_home_mount} ${docker_image} /bin/bash -c \
 "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.class=${testname}"
 
 echo
