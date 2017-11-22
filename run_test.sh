@@ -7,7 +7,30 @@
 ##
 ## Setting the port is optional, defaults to 8080
 
+docker_image="vicnate5/functional-test-runner"
+
 source_dir="$(pwd)"
+source_dir_mount="-v ${source_dir}:/source"
+
+liferay_home=""
+liferay_home_mount=""
+
+if [ "" == "${USER}" ]; then
+	USER=${USERNAME}
+fi
+
+if [ -f "app.server.${USER}.properties" ]; then
+	if [[ 0 -ne $(egrep -o $'\r\n'\$ "app.server.${USER}.properties" | wc -c ) ]]; then
+		perl -pi -e 's/\r\n|\n|\r/\n/g' "app.server.${USER}.properties"
+	fi
+
+	liferay_home=$(grep -F app.server.parent.dir app.server.${USER}.properties | cut -d'=' -f 2)
+	liferay_home_mount="-v ${liferay_home}:${liferay_home}"
+fi
+
+if [ "" == "${liferay_home}" ]; then
+	liferay_home_mount="-v $(dirname ${source_dir})/bundles:/bundles"
+fi
 
 OS=$(uname)
 
@@ -15,17 +38,18 @@ if [[ ${OS} == *Darwin* ]]
 then
 	open=open
 	sed="sed -i '' -e"
-	url="$(ifconfig en0 | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')"
+	url="docker.for.mac.localhost"
+	source_dir_mount="${source_dir_mount}:cached"
 elif [[ ${OS} == *Linux* ]]
 then
 	open=xdg-open
 	sed="sed -i -e"
-	url="$(ifconfig en0 | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')"
+	url="$(ifconfig docker0 | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')"
 elif [[ ${OS} == *NT* ]]
 then
 	open=start
 	sed="sed -i -e"
-	url="$(ipconfig | grep IPv4 | cut -d: -f2 | awk '{ print $1}')"
+	url="docker.for.win.localhost"
 else
 	echo "Could not detect OS"
 	exit
@@ -70,7 +94,7 @@ else
 	echo "test.root.properties created"
 fi
 
-docker run -t --rm -v ${source_dir}:/source:cached vicnate5/functional-test-runner /bin/bash -c \
+docker run -t --rm ${source_dir_mount} ${liferay_home_mount} ${docker_image} /bin/bash -c \
 "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.class=${testname}"
 
 echo
