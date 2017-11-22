@@ -15,17 +15,17 @@ if [[ ${OS} == *Darwin* ]]
 then
 	open=open
 	sed="sed -i '' -e"
-	url="$(ifconfig en0 | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')"
+	url="docker.for.mac.localhost"
 elif [[ ${OS} == *Linux* ]]
 then
 	open=xdg-open
 	sed="sed -i -e"
-	url="$(ifconfig en0 | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')"
+	url="$(/sbin/ip route | awk '/default/ { print $3 }')"
 elif [[ ${OS} == *NT* ]]
 then
 	open=start
 	sed="sed -i -e"
-	url="$(ipconfig | grep IPv4 | cut -d: -f2 | awk '{ print $1}')"
+	url="docker.for.win.localhost"
 else
 	echo "Could not detect OS"
 	exit
