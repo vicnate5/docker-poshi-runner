@@ -8,6 +8,7 @@
 ## Setting the port is optional, defaults to 8080
 
 source_dir="$(pwd)"
+source_dir_mount="-v ${source_dir}:/source"
 
 OS=$(uname)
 
@@ -16,6 +17,7 @@ then
 	open=open
 	sed="sed -i '' -e"
 	url="docker.for.mac.localhost"
+	source_dir_mount="${source_dir_mount}:cached"
 elif [[ ${OS} == *Linux* ]]
 then
 	open=xdg-open
@@ -70,7 +72,7 @@ else
 	echo "test.root.properties created"
 fi
 
-docker run -t --rm -v ${source_dir}:/source:cached vicnate5/functional-test-runner /bin/bash -c \
+docker run -t --rm ${source_dir_mount} vicnate5/functional-test-runner /bin/bash -c \
 "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.class=${testname}"
 
 echo
