@@ -92,7 +92,6 @@ else
 	echo "test.root.properties file not found"
 	echo "test.url=http://${url}:${port}" > ${source_dir}/test.root.properties
 	(echo ""; echo "test.skip.tear.down=true") >> ${source_dir}/test.root.properties
-	(echo ""; echo "test.assert.console.errors=false") >> ${source_dir}/test.root.properties
 	echo "test.root.properties created"
 fi
 
