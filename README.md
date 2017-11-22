@@ -39,7 +39,7 @@ docker run -t --rm -v $(pwd):/source:cached vicnate5/functional-test-runner /bin
 #### Linux
 (Replace TESTNAME and PORTALURL)
 ```
-docker run -t --rm -v $(pwd):/source:cached vicnate5/functional-test-runner /bin/bash -c "/run.sh; cd /source; ant -f build-test.xml run-selenium-test  -Dtest.skip.tear.down=true -Dtest.assert.console.errors=false -Dtest.class=TESTNAME -Dtest.url=PORTALURL"
+docker run -t --rm -v $(pwd):/source vicnate5/functional-test-runner /bin/bash -c "/run.sh; cd /source; ant -f build-test.xml run-selenium-test  -Dtest.skip.tear.down=true -Dtest.assert.console.errors=false -Dtest.class=TESTNAME -Dtest.url=PORTALURL"
 ```
 
 
