@@ -15,6 +15,20 @@ source_dir_mount="-v ${source_dir}:/source"
 liferay_home=""
 liferay_home_mount=""
 
+if [[ ! -e build-test.xml ]]; then
+	echo "Cannot find build-test.xml"
+	echo "Please run this script from the root of your portal source directory"
+	exit
+fi
+
+if [[ -z "${2}" ]]; then
+	port="8080"
+else
+	port="${2}"
+fi
+
+testname="${1}"
+
 if [ "" == "${USER}" ]; then
 	USER=${USERNAME}
 fi
@@ -59,20 +73,6 @@ if [[ -z "${url}" ]]; then
 	echo "Please check url statement for your OS in this script"
 	exit
 fi
-
-if [[ ! -e ${source_dir}/build-test.xml ]]; then
-	echo "Cannot find build-test.xml"
-	echo "Please run this script from the root of your portal source directory"
-	exit
-fi
-
-if [[ -z "${2}" ]]; then
-	port="8080"
-else
-	port="${2}"
-fi
-
-testname="${1}"
 
 echo
 echo "${testname}"
