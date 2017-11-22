@@ -26,6 +26,8 @@ if [ -f "app.server.${USER}.properties" ]; then
 
 	liferay_home=$(grep -F app.server.parent.dir app.server.${USER}.properties | cut -d'=' -f 2)
 	liferay_home_mount="-v ${liferay_home}:${liferay_home}"
+
+	cp app.server.${USER}.properties app.server.root.properties
 fi
 
 if [ "" == "${liferay_home}" ]; then
