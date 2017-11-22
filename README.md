@@ -52,4 +52,13 @@ Note: Results will be stored in the normal location as the docker container simp
 * Script does not work on Windows because of limitations in GitBash with mounting folders
 * Script uses expression to get your machine's IP. The expression might need to be tweaked to work on your network configuration
 * build-text.xml does a full modules directory search for poshi toggles. This can have a significant impact on performance when starting up poshi-runner.
+
+#### Mounting your bundle directory
+If you are using the default manual steps, your bundle will not be mounted to the image. This means that:
+* Console errors will not be caught by the test
+* `-Dtest.assert.console.errors=false` is set to prevent errors being thrown for the missing logs
 * Tests that need to download and then upload a file will not work
+
+You can add a mount of the bundle directory by using another `-v` flag to the docker run expression. If you bundle is not in the default location (../bundles), you also need to set `app.server.parent.dir` in `app.server.root.properties`.
+
+If you are using the script, it will take care of all of this configuration and mount the bundle for you.
