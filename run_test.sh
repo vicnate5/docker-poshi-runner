@@ -53,7 +53,7 @@ OS=$(uname)
 if [[ ${OS} == *Darwin* ]]; then
 	open=open
 	sed="sed -i '' -e"
-	url="docker.for.mac.localhost"
+	url="docker.for.mac.host.internal"
 	source_dir_mount="${source_dir_mount}:cached"
 elif [[ ${OS} == *Linux* ]]; then
 	open=xdg-open
