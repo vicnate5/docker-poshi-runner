@@ -11,8 +11,8 @@ RUN apt-get --assume-yes install ant
 # Install Firefox
 
 RUN apt-get --assume-yes install libdbus-glib-1-2 && \
-	wget https://ftp.mozilla.org/pub/firefox/releases/45.0.1esr/linux-x86_64/en-US/firefox-45.0.1esr.tar.bz2 && \
-	tar -xjvf firefox-45.0.1esr.tar.bz2 && \
+	wget https://ftp.mozilla.org/pub/firefox/releases/52.0.1esr/linux-x86_64/en-US/firefox-52.0.1esr.tar.bz2 && \
+	tar -xjvf firefox-52.0.1esr.tar.bz2 && \
 	mv firefox/ /usr/lib/firefox/ && \
 	ln -s /usr/lib/firefox/firefox /usr/bin/firefox && \
 	firefox -version
