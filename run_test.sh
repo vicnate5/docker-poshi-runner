@@ -94,5 +94,5 @@ docker run -t --rm ${source_dir_mount} ${liferay_home_mount} ${docker_image} /bi
 echo
 echo "Finished ${testname}"
 prTestName=$(echo ${testname} | sed 's/#/_/')
-${open} ${source_dir}/portal-web/test-results/${prTestName}/index.html
+${open} ${source_dir}/portal-web/test-results/LocalFile.${prTestName}/index.html
 echo "done"
