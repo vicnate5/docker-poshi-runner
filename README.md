@@ -8,6 +8,8 @@ Run poshi tests headlessly using docker.
 
 A built image is hosted at https://hub.docker.com/r/vicnate5/functional-test-runner/ so you do not need to build the Dockerfile unless you want to make changes to it.
 
+2018.03.18 - updated to Firefox 52. Use vicnate5/functional-test-runner:ff45 to access the old image with Firefox 45.
+
 ## Running a test with the script (Mac/Linux only)
 
 1. Start a local Portal server
@@ -20,7 +22,7 @@ e.g.
 ./run_test.sh PortalSmoke#Smoke
 ```
 
-## Runing a test manually
+## Running a test manually
 1. Start a local Portal server
 4. From the root directory of your Portal source code, run the following command:
 
