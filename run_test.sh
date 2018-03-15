@@ -62,7 +62,7 @@ elif [[ ${OS} == *Linux* ]]; then
 elif [[ ${OS} == *NT* ]]; then
 	open=start
 	sed="sed -i -e"
-	url="docker.for.win.localhost"
+	url="docker.for.win.host.internal"
 else
 	echo "Could not detect OS"
 	exit

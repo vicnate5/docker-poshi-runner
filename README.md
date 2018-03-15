@@ -29,13 +29,13 @@ e.g.
 #### Windows (use windows command line, will not work in gitbash)<br />
 (Replace TESTNAME)
 ```
-docker run -t --rm -v %cd%:/source vicnate5/functional-test-runner /bin/bash -c "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.url=http://docker.for.win.localhost:8080 -Dtest.skip.tear.down=true -Dtest.assert.console.errors=false -Dtest.class=TESTNAME"
+docker run -t --rm -v %cd%:/source vicnate5/functional-test-runner /bin/bash -c "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.url=http://docker.for.win.host.internal:8080 -Dtest.skip.tear.down=true -Dtest.assert.console.errors=false -Dtest.class=TESTNAME"
 ```
 
 #### Mac
 (Replace TESTNAME)
 ```
-docker run -t --rm -v $(pwd):/source:cached vicnate5/functional-test-runner /bin/bash -c "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.url=http://docker.for.mac.localhost:8080 -Dtest.skip.tear.down=true -Dtest.assert.console.errors=false -Dtest.class=TESTNAME"
+docker run -t --rm -v $(pwd):/source:cached vicnate5/functional-test-runner /bin/bash -c "/run.sh; cd /source; ant -f build-test.xml run-selenium-test -Dtest.url=http://docker.for.mac.host.internal:8080 -Dtest.skip.tear.down=true -Dtest.assert.console.errors=false -Dtest.class=TESTNAME"
 ```
 
 #### Linux
