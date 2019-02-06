@@ -1,12 +1,10 @@
 FROM openjdk:8-jdk
 
-RUN apt-get update
-
 # Install Ant
 
-ENV ANT_OPTS -Xmx2048m -Xms2048m -XX:MaxPermSize=512m
+ENV ANT_OPTS -Xmx2048m -Xms2048m
 
-RUN apt-get --assume-yes install ant
+RUN apt-get update && apt-get --assume-yes install ant
 
 # Install Firefox
 
